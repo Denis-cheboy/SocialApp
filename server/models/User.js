@@ -1,0 +1,68 @@
+const mongoose= require("mongoose")
+
+const Users= new mongoose.Schema({
+    username:{
+        type:String,
+        required:true
+    },
+    surname:{
+        type:String
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    profilePic:{
+        type:String,
+    },
+    coverPic:{
+        type:String,
+        default:""
+    },
+    followers:{
+        type:Array,
+        default:[]
+    },
+    followings:{
+        type:Array,
+        default:[]
+    },
+    city:{
+        type:String,
+    },
+    desc:{
+        type:String,
+    },
+    from:{
+        type:String,
+    },
+    relationship:{
+        type:Number,
+        enum:[1,2,3]
+    },
+    status:{
+        type:String,
+        default:"Active"
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
+    posts:{
+        type:[String]
+    },
+    notifications:{
+        type:Array,
+        default:[]
+    },
+    newMessages:{
+        type:Object,
+        default:{}
+    }
+},{timestamps:true})
+
+module.exports=mongoose.model("Users",Users)
